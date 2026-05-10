@@ -159,7 +159,7 @@ a:hover{
   <h1>日本の滝 100選  </h1>
     <div class="pie-wrapper">
     <canvas id="pie" width="100" height="100"></canvas>
-    <div class="percentage-text">33/100</div>
+    <div class="percentage-text">39/100</div>
     </div>
   <a href="ittataki.html">行った滝🌊</a>
 </div>
@@ -168,7 +168,7 @@ a:hover{
 
 <script>
 //割合指定
-const percentage = 33; // ここで％変更
+const percentage = 39; // ここで％変更
 const canvas = document.getElementById('pie');
 const ctx = canvas.getContext('2d');
 
@@ -193,12 +193,12 @@ ctx.fill();
 const waterfalls = {
     "北海道":{
         "": [
-        { name: "オシンコシンの滝", height: "50m", date: "", url: "https://www.google.com/maps/@44.038,144.93519,15z", state:""},
+        { name: "オシンコシンの滝", height: "50m", date: "(2026/5/9)", url: "https://www.google.com/maps/@44.038,144.93519,15z", state:"active"},
         { name: "賀老の滝", height: "70m", date: "", url: "https://www.google.com/maps/@42.59961,139.99259,15z", state:""},
         { name: "インクラの滝", height: "44m", date: "", url: "https://www.google.com/maps/@42.63677,141.33462,15z", state:""},
-        { name: "羽衣の滝", height: "270m", date: "", url: "https://www.google.com/maps/@43.62652,142.78671,15z", state:""},
-        { name: "アシリベツの滝", height: "26m", date: "", url: "https://www.google.com/maps/@42.91881,141.37241,17z", state:""},
-        { name: "流星・銀河の滝", height: "90m,104m", date: "", url: "https://www.google.com/maps/@43.71901,142.97745,15z", state:""},
+        { name: "羽衣の滝", height: "270m", date: "(2026/5/8)", url: "https://www.google.com/maps/@43.62652,142.78671,15z", state:"active"},
+        { name: "アシリベツの滝", height: "26m", date: "(2026/5/8)", url: "https://www.google.com/maps/@42.91881,141.37241,17z", state:"active"},
+        { name: "流星・銀河の滝", height: "90m,104m", date: "(2026/5/7)", url: "https://www.google.com/maps/@43.71901,142.97745,15z", state:"active"},
         ]
     },
 
@@ -228,17 +228,17 @@ const waterfalls = {
     "群馬": [
       { name: "吹割の滝", height: "7m", date: "(2023/7/13, 2024/11/24, 2025/3/15)", url: "https://www.google.com/maps/@36.70223,139.20732,15z", state: "active" },
       { name: "棚下不動の滝", height: "37m", date: "(2024/11/24)", url: "https://www.google.com/maps/@36.57162,139.05943,16z" , state: "active" },
-      { name: "常布の滝", height: "70m", date: "(2024/11/24)", url: "https://www.google.com/maps/@36.64229,138.56852,16z" ,state:""}],
+      { name: "常布の滝", height: "70m", date: "(2026/4/29)", url: "https://www.google.com/maps/@36.64229,138.56852,16z" ,state:"active"}],
     "埼玉":[{ name: "丸神の滝", height: "76m", date: "(2024/10/20)", url: "https://www.google.com/maps/@35.99094,138.88201,15z" , state: "active" }],
     "東京":[{ name: "払沢の滝", height: "60m", date: "(2022/8/2)", url: "https://www.google.com/maps/@35.72755,139.13912,15z" , state: "active" }],
     "神奈川":[{ name: "早戸大滝", height: "50m", date: "(2025/4/27)", url: "https://www.google.com/maps/@35.48831,139.16045,15z", state: "active"  },
-            { name: "洒水の滝", height: "69m", date: "", url: "https://www.google.com/maps/@35.35199,139.0624,15z", state:"" }]
+            { name: "洒水の滝", height: "69m", date: "(2026/5/4)", url: "https://www.google.com/maps/@35.35199,139.0624,15z", state:"active" }]
   },
 
   "中部":{
     "山梨":[{ name: "仙娥滝", height: "30m", date: "(2023/10/17)", url: "https://www.google.com/maps/@35.74964,138.56626,15z", state: "active"  },
             { name: "七ツ釜五段の滝", height: "20m", date: "", url: "https://www.google.com/maps/@35.8646,138.73172,15z", state:"" },
-            { name: "北精進ヶ滝", height: "180m", date: "(2024/12/7)", url: "https://www.google.com/maps/@35.72958,138.3258,15z", state:"" }],
+            { name: "北精進ヶ滝", height: "180m", date: "", url: "https://www.google.com/maps/@35.72958,138.3258,15z", state:"" }],
     "静岡":[{ name: "白糸の滝・音止めの滝", height: "20m,25m", date: "(2024/9/7)", url: "https://www.google.com/maps/@35.31286,138.58744,15z" , state: "active" },
             { name: "浄蓮の滝", height: "25m", date: "(2022/2/-)", url: "https://www.google.com/maps/@34.87193,138.92215,15z", state: "active"  },
             { name: "阿部の大滝", height: "80m", date: "(2025/6/29)", url: "https://www.google.com/maps/@35.30017,138.35164,15z" , state: "active" }],
