@@ -18,23 +18,20 @@ body{
 }
 
 .memo{
-  visibility: hidden;
+  display: none;
   border-left: 4px solid #1976d2;
   padding: 8px 10px;
   margin-left: 6px;
   font-size: 14px;
   color: #333;
   white-space: nowrap;
-  padding: 0 8px;
-  width: 110px;
-  flex: 0 0 auto;
 }
 .memo::before{
   content: "";
   margin-right: 2px;
 }
 .show-memo .memo{
-  visibility: visible;
+  display: inline-block;
 }
 
 .toggle-wrap{
@@ -134,26 +131,6 @@ h1{
   align-items: center;
   margin-bottom: 6px;
   flex-wrap: nowrap;
-  white-space: nowrap;
-}
-
-.rakusa{
-  font-size: 11px;
-  color: black;   
-  margin-left: 5px;
-  margin-right: 6px;
-  vertical-align: sub;
-  align-self: flex-end;
-  width: 50px;
-  flex: 0 0 auto;
-}
-
-.date{
-  color: #333;
-  font-size: 10px;
-  align-self: flex-end;
-  width: 70px;
-  flex: 0 0 auto;
 }
 
 .circle{
@@ -163,13 +140,11 @@ h1{
   border-radius: 50%;
   border: 2px solid #555;
   margin-right: 8px;
-  flex-shrink: 0;
 }
 
 /* active時の内側 */
 .circle.active{
   background: #fff;
-  flex-shrink: 0;
 }
 
 /* 外側リング（10pxで囲む） */
@@ -187,13 +162,7 @@ h1{
 .circle.none{
   display: none;
 }
-.item a{
-  display: inline-block;
-  width: 180px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+
 /* リンク */
 a{
   color: #333;
@@ -203,6 +172,20 @@ a:hover{
   text-decoration: underline;
 }
 
+.rakusa{
+  font-size: 11px;
+  color: black;   
+  margin-left: 5px;
+  margin-right: 6px;
+  vertical-align: sub;
+  align-self: flex-end;
+}
+
+.date{
+  color: #333;
+  font-size: 10px;
+  align-self: flex-end;
+}
 .title-wrapper a{
   margin-left: 60%;
   border-radius: 6px;
@@ -232,14 +215,24 @@ a:hover{
 <script>
     //{ name: "", height: "m", date: "", url: "https://www.google.com/maps/@,15z"}
 const waterfalls = {
-  /*
+  
   "北海道":{
-
+    "": [
+        { name: "アシリベツの滝", height: "26m", date: "(2026/5/7)", url: "https://www.google.com/maps/@42.91881,141.37241,17z", state:"active", memo:"Pから15分。わりときれい。"},
+        { name: "千鳥ヶ滝", height: "20m", date: "(2026/5/7)", url: "https://www.google.com/maps/@42.91106,141.97002,17z", state:"", memo:"結構よかった。"},
+        { name: "三段滝", height: "10m", date: "(2026/5/8)", url: "https://www.google.com/maps/@43.35016,142.15049,17z", state:"", memo:"だいぶ良かった。"},
+        { name: "白髭の滝", height: "30m", date: "(2026/5/8)", url: "https://www.google.com/maps/@43.47478,142.63914,17z", state:"", memo:"大雪山と一緒に見れてきれいだった。"},
+        { name: "羽衣の滝", height: "270m", date: "(2026/5/8)", url: "https://www.google.com/maps/@43.62652,142.78671,15z", state:"active", memo:"きれい。雪解けの季節は遊歩道封鎖してる。"},
+        { name: "流星・銀河の滝", height: "90m,104m", date: "(2026/5/8)", url: "https://www.google.com/maps/@43.71901,142.97745,15z", state:"active", memo:"展望スポットは結構山登った。26年度は熊2回目撃。"},
+        { name: "オシンコシンの滝", height: "50m", date: "(2026/5/9)", url: "https://www.google.com/maps/@44.038,144.93519,15z", state:"active", memo:"駐車場からすぐ。増水していて〇"},
+        { name: "三段の滝", height: "30m", date: "(2026/5/9)", url: "https://www.google.com/maps/@44.04536,144.95355,17z", state:"", memo:"知床。雨で水量が増してて良かった。"},
+        { name: "さくらの滝", height: "2.5m", date: "(2026/5/9)", url: "https://www.google.com/maps/@43.73183,144.52297,17z", state:"", memo:"さくらますが上ってくるらしい"}
+      ]
   },
-  */
+  
   "東北": {
     "青森":[{ name: "奥入瀬渓流", height: "", date: "(2025/8/10)", url: "https://www.google.com/maps/@40.51283,140.96567,14z", memo:""},
-            { name: "　銚子大滝", height: "7m", date: "", url: "https://www.google.com/maps/@40.48839,140.95127,15z",state: "none", memo:"幅広。人多い。"},
+            { name: "　銚子大滝", height: "7m", date: "", url: "https://www.google.com/maps/@40.48839,140.95127,15z",state: "none", memo:"幅広。一番人多い。"},
             { name: "　白糸の滝", height: "30m", date: "", url: "https://www.google.com/maps/@40.48839,140.95127,15z",state: "none", memo:"遠目。"},
             { name: "　雲井の滝", height: "20m", date: "", url: "https://www.google.com/maps/@40.48839,140.95127,15z",state: "none", memo:"路駐。滝下まで行ける。"},
             { name: "　白絹の滝", height: "30m", date: "", url: "https://www.google.com/maps/@40.48839,140.95127,15z",state: "none", memo:"遠目。"},
@@ -273,7 +266,8 @@ const waterfalls = {
       { name: "吹割の滝", height: "7m", date: "(2023/7/13, 2024/11/24, 2025/3/15)", url: "https://www.google.com/maps/@36.70223,139.20732,15z", state: "active", memo:"東洋のナイアガラ。良い。"},
       { name: "棚下不動の滝", height: "37m", date: "(2024/11/24)", url: "https://www.google.com/maps/@36.57162,139.05943,16z", state: "active", memo:"思ったより高さある。飛沫〇"},
       { name: "鱒飛の滝", height: "15m", date: "(2024/11/24)", url: "https://www.google.com/maps/@36.70223,139.20732,15z" ,state:"", memo:"吹割のついでに。"},
-      { name: "小中大滝", height: "96m", date: "(2024/11/24)", url: "https://www.google.com/maps/@36.585510,139.325694,18z",state:"", memo:"つり橋がとっても怖い。全貌は見えない。"}
+      { name: "小中大滝", height: "96m", date: "(2024/11/24)", url: "https://www.google.com/maps/@36.585510,139.325694,18z",state:"", memo:"つり橋がとっても怖い。全貌は見えない。"},
+      { name: "常布の滝", height: "70m", date:  "(2026/4/29)", url: "https://www.google.com/maps/@36.64229,138.56852,16z",state:"active", memo:"往復4時間。藪漕ぎ。硫酸化硫黄。"},
     ],
     "千葉":[{ name: "粟又の滝", height: "30m", date: "(2022/9/29)", url: "https://www.google.com/maps/@35.218998,140.182766,15z", memo:"階段下る。ちょうどいい。"},
            { name: "濃溝の滝", height: "", date: "(2025/6/8)", url: "https://www.google.com/maps/@35.185463,140.060573,15z", memo:"しょぼい。"}
@@ -296,7 +290,9 @@ const waterfalls = {
           ],
     "神奈川":[{ name: "早戸大滝", height: "50m", date: "(2025/4/27)", url: "https://www.google.com/maps/@35.48831,139.16045,15z", state: "active", memo:"4度目にして到達(⇆6時間)。ツキノワグマに遭遇。ゲート次第。"},
             { name: "エビラ沢の滝", height: "m", date: "(2024/5/5)", url: "https://www.google.com/maps/@35.524366,139.106694,15z", memo:"神之川キャンプ場内。"},
-            { name: "不動滝", height: "m", date: "(2024/7/21)", url: "https://www.google.com/maps/@35.152991,139.067145,15z", memo:"湯河原。ほどよい。"}
+            { name: "不動滝", height: "m", date: "(2024/7/21)", url: "https://www.google.com/maps/@35.152991,139.067145,15z", memo:"湯河原。ほどよい。"},
+            { name: "洒水の滝", height: "90m", date: "(2026/5/4)", url: "https://www.google.com/maps/@35.3519,139.06492,15z", state:"active", memo:"よい。観光滝。"}
+           
           ]
   },
 
@@ -323,8 +319,8 @@ const waterfalls = {
             { name: "（天河の滝", height: "40m", date: "", url: "https://www.google.com/maps/@35.63014,137.54669,15z", state:"none", memo:""},
             { name: "（霧ヶ滝", height: "30m", date: "", url: "https://www.google.com/maps/@35.63014,137.54669,15z", state:"none", memo:""},
             { name: "白糸の滝", height: "3m", date: "", url: "https://www.google.com/maps/@36.409783,138.593110,15z", memo:"軽井沢。観光滝。"},
-            { name: "乙女滝", height: "", date: "(2026/3/7)", url: "https://www.google.com/maps/@36.0359900,138.2710491,15z", memo:"でかかった。マイナスイオン200,000/cc"},
-            { name: "霧降の滝", height: "", date: "(2026/3/7)", url: "https://www.google.com/maps/@36.0357750,138.2772118,15z", memo:"氷瀑、溶けかけ。マイナスイオン3,000/cc"}
+            { name: "乙女滝", height: "マイナスイオン200,000/cc", date: "(2026/3/7)", url: "https://www.google.com/maps/@36.0359900,138.2710491,15z", memo:"でかかった。"},
+            { name: "霧降の滝", height: "マイナスイオン3,000/cc", date: "(2026/3/7)", url: "https://www.google.com/maps/@36.0357750,138.2772118,15z", memo:"氷瀑、溶けかけ。"}
           ],
     "新潟":[{ name: "苗名滝", height: "55m", date: "(2024/8/4)", url: "https://www.google.com/maps/@36.85024,138.13291,15z", state: "active", memo:"近づけなかった。遠くからでも迫力〇"},
             { name: "惣滝", height: "80m", date: "(2024/8/4)", url: "https://www.google.com/maps/@36.90514,138.13716,15z", state: "active", memo:"険道。ぬかるみと軽装備、撤退。少しだけ見えた。"}
@@ -470,3 +466,4 @@ memoToggle.addEventListener("change", function () {
 </body>
 
 </html>
+
