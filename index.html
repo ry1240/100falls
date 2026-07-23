@@ -159,7 +159,7 @@ a:hover{
   <h1>日本の滝 100選  </h1>
     <div class="pie-wrapper">
     <canvas id="pie" width="100" height="100"></canvas>
-    <div class="percentage-text">41/100</div>
+    <div class="percentage-text">44/100</div>
     </div>
   <a href="ittataki.html">行った滝🌊</a>
 </div>
@@ -168,7 +168,7 @@ a:hover{
 
 <script>
 //割合指定
-const percentage = 41; // ここで％変更
+const percentage = 44; // ここで％変更
 const canvas = document.getElementById('pie');
 const ctx = canvas.getContext('2d');
 
@@ -214,9 +214,9 @@ const waterfalls = {
                 { name: "三階の滝", height: "181m", date: "", url: "https://www.google.com/maps/@38.1317,140.52221,15z", state:"" }],
         "山形":[{ name: "七ツ滝", height: "90m", date: "", url: "https://www.google.com/maps/@38.56346,139.92119,15z", state:"" },
                 { name: "白糸の滝", height: "120m", date: "", url: "https://www.google.com/maps/@38.76555,140.05611,15z", state:""},
-                { name: "滑川大滝", height: "80m", date: "(2026/5/24)", url: "https://www.google.com/maps/@37.77909,140.22095,15z", state:"" }],
+                { name: "滑川大滝", height: "80m", date: "(2026/5/24, 2026/7/19)", url: "https://www.google.com/maps/@37.77909,140.22095,15z", state:"active" }],
         "福島":[{ name: "銚子ヶ滝", height: "48m", date: "(2025/10/13)", url: "https://www.google.com/maps/@37.58403,140.26455,15z", state: "active" },
-                { name: "三条の滝", height: "100m", date: "", url: "https://www.google.com/maps/@36.96566,139.25085,17z", state:"" },
+                { name: "三条の滝", height: "100m", date: "(2026/7/19)", url: "https://www.google.com/maps/@36.96566,139.25085,17z", state:"active" },
                 { name: "乙字ヶ滝", height: "6m", date: "(2026/5/23)", url: "https://www.google.com/maps/@37.24724,140.39135,15z", state:"active" }]
     },
 
@@ -243,7 +243,7 @@ const waterfalls = {
             { name: "浄蓮の滝", height: "25m", date: "(2022/2/-)", url: "https://www.google.com/maps/@34.87193,138.92215,15z", state: "active"  },
             { name: "阿部の大滝", height: "80m", date: "(2025/6/29)", url: "https://www.google.com/maps/@35.30017,138.35164,15z" , state: "active" }],
     "長野":[{ name: "田立の滝", height: "40m", date: "(2024/10/13)", url: "https://www.google.com/maps/@35.63014,137.54669,15z" , state:"active" },
-            { name: "三本滝", height: "50m", date: "",url:"https://www.google.com/maps/@36.11849,137.59304,15z", state:""},
+            { name: "三本滝", height: "50m", date: "(2026/7/4)",url:"https://www.google.com/maps/@36.11849,137.59304,15z", state:"active"},
             { name: "米子大瀑布", height: "89m", date: "",url: "https://www.google.com/maps/@36.56808,138.40522,15z",state:"" }],
     "新潟":[{ name: "苗名滝", height: "55m", date: "(2024/8/4)", url: "https://www.google.com/maps/@36.85024,138.13291,15z" , state: "active" },
             { name: "惣滝", height: "80m", date: "(2024/8/4)", url: "https://www.google.com/maps/@36.90514,138.13716,15z", state: "active"  },
